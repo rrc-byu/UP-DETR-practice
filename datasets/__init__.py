@@ -9,6 +9,7 @@ import torch.utils.data
 import torchvision
 
 from .coco import build as build_coco
+from .dota import build as build_dota
 from .selfdet import build_selfdet
 
 
@@ -31,4 +32,6 @@ def build_dataset(image_set, args):
         # to avoid making panopticapi required for coco
         from .coco_panoptic import build as build_coco_panoptic
         return build_coco_panoptic(image_set, args)
+    else:
+        return build_dota(image_set, args)
     raise ValueError(f'dataset {args.dataset_file} not supported')
