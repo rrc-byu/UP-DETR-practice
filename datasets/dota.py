@@ -153,20 +153,22 @@ def make_coco_transforms(image_set):
 
 
 def build(image_set, args):
+  root = Path(args.coco_path)
   # image_set tells it if were training or validating, from main.py
     # setting up authentication
     #auth.authenticate_user()
     #credentials, project_id = google.auth.default()
     #fs = gcsfs.GCSFileSystem(project="rrc-byu-storage", token=credentials)
-    root = 'rrc-byu-storage/chips'
+   #root = 'rrc-byu-storage/chips'
+  print(root)
     # Path(args.coco_path)
-    assert root.exists(), f'provided COCO path {root} does not exist'
-    mode = 'instances'
-    PATHS = {
-        "train": (root / "train", '/content/train.json'),
-        "val": (root / "val", '/content/val.json'),
-    }
+    #assert root.exists(), f'provided COCO path {root} does not exist'
+    #mode = 'instances'
+  PATHS = {
+    "train": (root / "train2017", '/content/train.json'),
+    "val": (root / "val2017", '/content/val.json'),
+  }
 
-    img_folder, ann_file = PATHS[image_set]
-    dataset = CocoDetection(img_folder, ann_file, transforms=make_coco_transforms(image_set), return_masks=args.masks)
-    return dataset
+  img_folder, ann_file = PATHS[image_set]
+  dataset = CocoDetection(img_folder, ann_file, transforms=make_coco_transforms(image_set), return_masks=args.masks)
+  return dataset
