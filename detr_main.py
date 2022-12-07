@@ -133,10 +133,10 @@ def main(args):
      
     # connnecting to google bucket
     # setting up authentication
-    auth.authenticate_user()
-    credentials, project_id = google.auth.default()
-    fs = gcsfs.GCSFileSystem(project="rrc-byu-storage", token=credentials)
-    fs.open(f"rrc-byu-storage/chips")
+    #auth.authenticate_user()
+    #credentials, project_id = google.auth.default()
+    #fs = gcsfs.GCSFileSystem(project="rrc-byu-storage", token=credentials)
+    #fs.open(f"rrc-byu-storage/chips")
 
     model_without_ddp = model
     if args.distributed:
