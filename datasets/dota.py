@@ -160,7 +160,6 @@ def build(image_set, args):
     #credentials, project_id = google.auth.default()
     #fs = gcsfs.GCSFileSystem(project="rrc-byu-storage", token=credentials)
    #root = 'rrc-byu-storage/chips'
-  print(root)
     # Path(args.coco_path)
     #assert root.exists(), f'provided COCO path {root} does not exist'
     #mode = 'instances'
